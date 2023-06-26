@@ -1,6 +1,6 @@
 {
     "name": "altaz",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "AltAz is a library for performing common astronomy calculations.",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
