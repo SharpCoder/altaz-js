@@ -81,7 +81,7 @@ const location = new GPSCoordinate(
 );
 
 // Position of the planet
-const targetPosition = planet.asSphere();
+const targetPosition = Mercury.asSphere();
 const targetAltAz = sphereToHorizontal(location, targetPosition, new Date());
 ```
 
