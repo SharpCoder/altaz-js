@@ -6,3 +6,4 @@ export * from './neptune';
 export * from './saturn';
 export * from './uranus';
 export * from './venus';
+export * from './body';
