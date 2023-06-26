@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "ES5",
+    "module": "es2015",
+    "lib": ["ES2015", "ES2016", "ES2017", "DOM"],
+    "strict": true,
+    "sourceMap": true,
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "outDir": "dist/"
+  },
+  "include": ["src/**/*"]
+}
