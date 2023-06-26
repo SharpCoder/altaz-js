@@ -1,29 +1,29 @@
 {
-  "name": "altaz",
-  "version": "1.0.1",
-  "description": "AltAz is a library for performing common astronomy calculations.",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
-  },
-  "author": "Josh Cole",
-  "license": "MIT",
-  "devDependencies": {
-    "typescript": "^5.1.3"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SharpCoder/altaz-js.git"
-  },
-  "keywords": [
-    "astronomy",
-    "math",
-    "space"
-  ],
-  "bugs": {
-    "url": "https://github.com/SharpCoder/altaz-js/issues"
-  },
-  "homepage": "https://github.com/SharpCoder/altaz-js#readme"
+    "name": "altaz",
+    "version": "1.0.2",
+    "description": "AltAz is a library for performing common astronomy calculations.",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsc"
+    },
+    "author": "Josh Cole",
+    "license": "MIT",
+    "devDependencies": {
+        "typescript": "^5.1.3"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/SharpCoder/altaz-js.git"
+    },
+    "keywords": [
+        "astronomy",
+        "math",
+        "space"
+    ],
+    "bugs": {
+        "url": "https://github.com/SharpCoder/altaz-js/issues"
+    },
+    "homepage": "https://github.com/SharpCoder/altaz-js#readme"
 }
