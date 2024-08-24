@@ -1,4 +1,4 @@
-import { calculateHourAngle } from './core';
+import { calculateHourAngle, calculateSidereelTime } from './core';
 import { rads } from './math';
 import {
     Angle,
@@ -98,4 +98,31 @@ export function sphereToHorizontal(
     );
 
     return new HorizontalCoordinate(new Angle(altitude), new Angle(azimuth));
+}
+
+/**
+ * This method will take a Horizontal coordinate and translate it
+ * to Spherical (Ra/Dec), while adjusting for the local hour angle
+ * at an instant.
+ */
+export function horizontalToSphere(
+    gps: GPSCoordinate,
+    target: HorizontalCoordinate,
+    instant: Date,
+): SphericalCoordinate {
+    // Convert altitude and azimuth to hour angle and declination
+    const sinDecl = Math.sin(gps.latitude.asRad()) * Math.sin(target.altitude.asRad()) + Math.cos(gps.latitude.asRad()) * Math.cos(target.altitude.asRad()) * Math.cos(target.azimuth.asRad());
+    const Decl = Math.asin(sinDecl);
+    let cosHA = (Math.sin(target.altitude.asRad()) - Math.sin(gps.latitude.asRad()) * sinDecl) / (Math.cos(Decl) * Math.cos(gps.latitude.asRad()));
+    // Handle quadrant logic.
+    const sign = target.azimuth.asDeg() > 180.0 ? 1.0 : -1.0;
+    const acosHA = Math.acos(cosHA);
+    let HA = new Angle(sign * acosHA).asDeg() / 15.0;
+    let RA = calculateSidereelTime(instant, gps.longitude) - HA;
+
+    return new SphericalCoordinate(
+        1.0,
+        Angle.fromDegrees(RA * 15).rev(),
+        new Angle(Decl),
+    );
 }

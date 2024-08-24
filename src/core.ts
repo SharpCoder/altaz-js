@@ -52,11 +52,10 @@ export const julianMillenniaFromEpoch2000 = (julianDays: number) =>
 export const julianCenturiesFromEpoch2000 = (julianDays: number) =>
     10 * julianMillenniaFromEpoch2000(julianDays);
 
-export const calculateHourAngle = (
-    instant: Date,
-    longitude: Angle,
-    RA: Angle
-) => {
+export const calculateSidereelTime = (
+    instant: Date, 
+    longitude: Angle
+): number => {
     let JD = instantToDaysJulian(instant);
     let d = julianToDayNumber(JD);
     let sol = new Sol(d);
@@ -73,6 +72,15 @@ export const calculateHourAngle = (
             instant.getUTCSeconds()
         ) +
         longitude.asDeg() / 15.0;
+    return (SIDTIME + 24.0) % 24.0;
+}
+
+export const calculateHourAngle = (
+    instant: Date,
+    longitude: Angle,
+    RA: Angle
+) => {
+    let SIDTIME = calculateSidereelTime(instant, longitude);
     let HA = SIDTIME - RA.asDeg() / 15.0;
     return Angle.fromDegrees(HA * 15.0);
 };
